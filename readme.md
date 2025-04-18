@@ -10,7 +10,7 @@ Access the video demonstration on [Youtube]()
 
 ## Table of Contents:
 
-- [About AJAXIS](#about-ajaxis)
+- [About Finnkino Movies App](#about-ajaxis)
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)

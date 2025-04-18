@@ -1,60 +1,25 @@
 body {
-  background-image: url("../images/night-sky-background-image.jpg");
   background-color: black;
 }
 
-#header {
-  display: block;
-  margin: auto;
-}
-
+#header,
 #footer {
-  font-size: 18px;
   text-align: center;
 }
 
-button {
-  background-color: #fbeee0;
-  border: 2px solid #422800;
-  border-radius: 30px;
-  box-shadow: #422800 4px 4px 0 0;
-  color: #422800;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 50px;
-  margin: 5px;
-  padding: 0 18px;
-  text-align: center;
-  text-decoration: none;
-  touch-action: manipulation;
-  user-select: none;
-  -webkit-user-select: none;
+.showContainer {
+  height: 500px;
 }
 
-button:hover {
-  background-color: #fff;
+img {
+  float: left;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
-button:active {
-  box-shadow: #422800 2px 2px 0 0;
-  transform: translate(2px, 2px);
+h1,
+h4,
+p,
+ul {
+  color: yellow;
 }
-
-@media (min-width: 768px) {
-  button {
-    min-width: 120px;
-    padding: 0 25px;
-  }
-}
-
-table {
-  color: white;
-}
-
-/* table,
-tr,
-td {
-  display: inline;
-} */
