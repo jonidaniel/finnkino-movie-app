@@ -1,4 +1,4 @@
-# AJAXIS
+# FINNKINO MOVIE APP
 
 Date: Spring 2025\
 Organization: Laurea UAS\
@@ -10,7 +10,7 @@ Access the video demonstration on [Youtube]()
 
 ## Table of Contents:
 
-- [About Finnkino Movies App](#about-ajaxis)
+- [About Finnkino Movie App](#about-finnkino-movie-app)
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
@@ -18,9 +18,9 @@ Access the video demonstration on [Youtube]()
 - [Credits](#credits)
 - [License](#license)
 
-## About AJAXIS
+## About FINNKINO MOVIE APP
 
-- AJAXIS was made for ...
+- Finnkino Movie App was made for ...
 
 ## Screenshots
 
@@ -45,11 +45,11 @@ or
 
 ## Status
 
-- AJAXIS version 1.0.0 is now in development and not yet operational
+- Finnkino Movie App version 1.0.0 is now in development and not yet operational
 
 ## Credits
 
-- AJAXIS was developed in co-operation with [Laurea UAS](https://www.laurea.fi)
+- Finnkino Movie App was developed in co-operation with [Laurea UAS](https://www.laurea.fi)
 
 ## License
 
