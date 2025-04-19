@@ -40,9 +40,9 @@ I've developed this application with:
 
 Go to
 
-- https://fascinating-bunny-10c96f.netlify.app/ (preferably Safari or Chrome) or
+- https://???.netlify.app/ (preferably Safari or Chrome) or
 
-- https://curriculus.onrender.com/ (preferably Safari) or
+- https://???.onrender.com/ (preferably Safari) or
 
 - Clone repo with `git clone https://github.com/jonidaniel/finnkino-movie-app` and open `finnkino-movie-app/index.html` in your browser (preferably Chrome)
 
