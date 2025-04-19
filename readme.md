@@ -44,9 +44,7 @@ Go to
 
 - https://curriculus.onrender.com/ (preferably Safari) or
 
-- Clone repo with `git clone https://github.com/jonidaniel/finnkino-movie-app` and
-
-- Open `finnkino-movie-app/index.html` in your browser (preferably Chrome)
+- Clone repo with `git clone https://github.com/jonidaniel/finnkino-movie-app` and open `finnkino-movie-app/index.html` in your browser (preferably Chrome)
 
 ## Status
 
