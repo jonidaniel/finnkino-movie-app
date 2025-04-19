@@ -8,7 +8,7 @@ function listShows(data) {
     let image = document.createElement("img");
     image.src = show
       .querySelector("Images")
-      .querySelector("EventSmallImagePortrait").textContent;
+      .querySelector("EventMediumImagePortrait").textContent;
 
     // Movie title
     let title = document.createElement("p");

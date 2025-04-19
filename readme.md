@@ -1,4 +1,4 @@
-# FINNKINO MOVIE APP
+# Finnkino Movie App
 
 Date: Spring 2025\
 Organization: Laurea UAS\
@@ -18,9 +18,11 @@ Access the video demonstration on [Youtube]()
 - [Credits](#credits)
 - [License](#license)
 
-## About FINNKINO MOVIE APP
+## About Finnkino Movie App
 
-- Finnkino Movie App was made for ...
+- The app displays Finnkino's shows
+- First, users search for the desired theatre, then the app lists all shows for that theatre for the current day
+- Specific information, like production years and genres, are shown for every show
 
 ## Screenshots
 
@@ -36,12 +38,15 @@ I've developed this application with:
 
 ## Setup
 
-- Go to https://fascinating-bunny-10c96f.netlify.app/ (preferably Safari or Chrome) or https://curriculus.onrender.com/ (preferably Safari)
+Go to
 
-or
+- https://fascinating-bunny-10c96f.netlify.app/ (preferably Safari or Chrome) or
 
-- Clone repo with `git clone https://github.com/jonidaniel/ajaxis`
-- Open `ajaxis/index.html` in your browser (preferably Google Chrome)
+- https://curriculus.onrender.com/ (preferably Safari) or
+
+- Clone repo with `git clone https://github.com/jonidaniel/finnkino-movie-app` and
+
+- Open `finnkino-movie-app/index.html` in your browser (preferably Chrome)
 
 ## Status
 
