@@ -35,21 +35,10 @@ function listShows(data) {
     }
   }
 
-  // Gather all start times for a movie in startTimes
-  for (let movie in moviesAndTheirStartTimes) {
-    let startTimes = document.createElement("p");
-    startTimes.innerText = moviesAndTheirStartTimes[movie];
-  }
-
   // Keeps track of already added movies
   let alreadyAddedMovies = [];
 
   for (let show of shows) {
-    ///////////////
-    // if (show.querySelector("EventID").textContent in moviesAndTheirStartTimes) {
-    //   console.log(show.querySelector("EventID").textContent);
-    // }
-    ////////////
     // Execute if you come across an unseen EventID (i.e. a new movie)
     if (
       !alreadyAddedMovies.includes(show.querySelector("EventID").textContent)
@@ -59,7 +48,7 @@ function listShows(data) {
       image.src = show
         .querySelector("Images")
         .querySelector("EventLargeImagePortrait").textContent;
-      image.height = 500;
+      image.height = 350;
 
       // Movie title
       let title = document.createElement("p");
@@ -93,6 +82,11 @@ function listShows(data) {
         "PresentationMethodAndLanguage"
       ).textContent;
 
+      // Start times
+      let startTimes = document.createElement("p");
+      startTimes.innerText =
+        moviesAndTheirStartTimes[show.querySelector("EventID").textContent];
+
       // A container to wrap one movie and its info into
       let showContainer = document.createElement("div");
       showContainer.className = "showContainer";
@@ -107,6 +101,7 @@ function listShows(data) {
       showContainer.append(genres);
       showContainer.append(theatreAndAuditorium);
       showContainer.append(presentationMethodAndLanguage);
+      showContainer.append(startTimes);
 
       showContainers.append(showContainer);
 
