@@ -129,38 +129,54 @@ function handleClick(e) {
   // Remove all shows from the webpage (in case user changes the theatre)
   showContainers.innerHTML = "<div></div>";
 
-  if (e == "Espoo: OMENA") handleFetch(1039);
-  else if (e == "Espoo: SELLO") handleFetch(1038);
-  else if (e == "Helsinki: ITIS") handleFetch(1045);
-  else if (e == "Helsinki: KINOPALATSI") handleFetch(1031);
-  else if (e == "Helsinki: MAXIM") handleFetch(1032);
-  else if (e == "Helsinki: TENNISPALATSI") handleFetch(1033);
-  else if (e == "Vantaa: FLAMINGO") handleFetch(1013);
-  else if (e == "Jyväskylä: FANTASIA") handleFetch(1015);
-  else if (e == "Kuopio: SCALA") handleFetch(1016);
-  else if (e == "Lahti: KUVAPALATSI") handleFetch(1017);
-  else if (e == "Lappeenranta: STRAND") handleFetch(1041);
-  else if (e == "Oulu: PLAZA") handleFetch(1018);
-  else if (e == "Pori: PROMENADI") handleFetch(1019);
-  else if (e == "Tampere: CINE ATLAS") handleFetch(1034);
-  else if (e == "Tampere: PLEVNA") handleFetch(1035);
-  else if (e == "Turku: KINOPALATSI") handleFetch(1022);
+  if (e == "Omena, Espoo") handleFetch(1039);
+  else if (e == "Sello, Espoo") handleFetch(1038);
+  else if (e == "Itis, Helsinki") handleFetch(1045);
+  else if (e == "Kinopalatsi, Helsinki") handleFetch(1031);
+  else if (e == "Maxim, Helsinki") handleFetch(1032);
+  else if (e == "Tennispalatsi, Helsinki") handleFetch(1033);
+  else if (e == "Flamingo, Vantaa") handleFetch(1013);
+  else if (e == "Fantasia, Jyväskylä") handleFetch(1015);
+  else if (e == "Scala, Kuopio") handleFetch(1016);
+  else if (e == "Kuvapalatsi, Lahti") handleFetch(1017);
+  else if (e == "Strand, Lappeenranta") handleFetch(1041);
+  else if (e == "Plaza, Oulu") handleFetch(1018);
+  else if (e == "Promenadi, Pori") handleFetch(1019);
+  else if (e == "Cine Atlas, Tampere") handleFetch(1034);
+  else if (e == "Plevna, Tampere") handleFetch(1035);
+  else if (e == "Kinopalatsi, Turku") handleFetch(1022);
   else handleFetch(1046);
 }
 
 function main() {
   const header = document.createElement("div");
+  const searchBox = document.createElement("div");
   const content = document.createElement("div");
   const footer = document.createElement("div");
 
-  header.id = "header";
   content.id = "content";
-  footer.id = "footer";
 
-  header.innerHTML = "<h1>Finnkino Movie App</h1>";
-  footer.innerHTML = "<h4>ⓒ 2025 Joni Mäkinen</h4>";
+  header.innerHTML = `<h1 id="header">Finnkino Elokuvat</h1>`;
+  searchBox.innerHTML = `
+    <div class="search-box">
+      <div class="row">
+        <input
+          type="text"
+          id="input-box"
+          placeholder="Etsi elokuvateatteria..."
+          autocomplete="off"
+        />
+        <button onclick="handleClick(document.getElementById('input-box').value)">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div class="result-box"></div>
+    </div>
+  `;
+  footer.innerHTML = `<h4 id="footer">ⓒ 2025 Joni Mäkinen</h4>`;
 
   document.body.append(header);
+  document.body.append(searchBox);
   document.body.append(content);
   document.body.append(footer);
 }
