@@ -129,22 +129,22 @@ function handleClick(e) {
   // Remove all shows from the webpage (in case user changes the theatre)
   showContainers.innerHTML = "<div></div>";
 
-  if (e.target.innerText == "Espoo: OMENA") handleFetch(1039);
-  else if (e.target.innerText == "Espoo: SELLO") handleFetch(1038);
-  else if (e.target.innerText == "Helsinki: ITIS") handleFetch(1045);
-  else if (e.target.innerText == "Helsinki: KINOPALATSI") handleFetch(1031);
-  else if (e.target.innerText == "Helsinki: MAXIM") handleFetch(1032);
-  else if (e.target.innerText == "Helsinki: TENNISPALATSI") handleFetch(1033);
-  else if (e.target.innerText == "Vantaa: FLAMINGO") handleFetch(1013);
-  else if (e.target.innerText == "Jyväskylä: FANTASIA") handleFetch(1015);
-  else if (e.target.innerText == "Kuopio: SCALA") handleFetch(1016);
-  else if (e.target.innerText == "Lahti: KUVAPALATSI") handleFetch(1017);
-  else if (e.target.innerText == "Lappeenranta: STRAND") handleFetch(1041);
-  else if (e.target.innerText == "Oulu: PLAZA") handleFetch(1018);
-  else if (e.target.innerText == "Pori: PROMENADI") handleFetch(1019);
-  else if (e.target.innerText == "Tampere: CINE ATLAS") handleFetch(1034);
-  else if (e.target.innerText == "Tampere: PLEVNA") handleFetch(1035);
-  else if (e.target.innerText == "Turku: KINOPALATSI") handleFetch(1022);
+  if (e == "Espoo: OMENA") handleFetch(1039);
+  else if (e == "Espoo: SELLO") handleFetch(1038);
+  else if (e == "Helsinki: ITIS") handleFetch(1045);
+  else if (e == "Helsinki: KINOPALATSI") handleFetch(1031);
+  else if (e == "Helsinki: MAXIM") handleFetch(1032);
+  else if (e == "Helsinki: TENNISPALATSI") handleFetch(1033);
+  else if (e == "Vantaa: FLAMINGO") handleFetch(1013);
+  else if (e == "Jyväskylä: FANTASIA") handleFetch(1015);
+  else if (e == "Kuopio: SCALA") handleFetch(1016);
+  else if (e == "Lahti: KUVAPALATSI") handleFetch(1017);
+  else if (e == "Lappeenranta: STRAND") handleFetch(1041);
+  else if (e == "Oulu: PLAZA") handleFetch(1018);
+  else if (e == "Pori: PROMENADI") handleFetch(1019);
+  else if (e == "Tampere: CINE ATLAS") handleFetch(1034);
+  else if (e == "Tampere: PLEVNA") handleFetch(1035);
+  else if (e == "Turku: KINOPALATSI") handleFetch(1022);
   else handleFetch(1046);
 }
 
@@ -159,39 +159,6 @@ function main() {
 
   header.innerHTML = "<h1>Finnkino Movie App</h1>";
   footer.innerHTML = "<h4>ⓒ 2025 Joni Mäkinen</h4>";
-
-  let theatres = [
-    "Espoo: OMENA",
-    "Espoo: SELLO",
-    "Helsinki: ITIS",
-    "Helsinki: KINOPALATSI",
-    "Helsinki: MAXIM",
-    "Helsinki: TENNISPALATSI",
-    "Vantaa: FLAMINGO",
-    "Jyväskylä: FANTASIA",
-    "Kuopio: SCALA",
-    "Lahti: KUVAPALATSI",
-    "Lappeenranta: STRAND",
-    "Oulu: PLAZA",
-    "Pori: PROMENADI",
-    "Tampere: CINE ATLAS",
-    "Tampere: PLEVNA",
-    "Turku: KINOPALATSI",
-    "Raisio: LUXE MYLLY",
-  ];
-
-  // Create the theatre list
-  let list = document.createElement("ul");
-  for (let i = 0; i < theatres.length; i++) {
-    let item = document.createElement("li");
-    item.addEventListener("click", (e) => {
-      handleClick(e);
-    });
-    item.innerHTML = theatres[i];
-    list.appendChild(item);
-  }
-
-  content.append(list);
 
   document.body.append(header);
   document.body.append(content);
