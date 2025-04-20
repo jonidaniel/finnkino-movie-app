@@ -1,4 +1,4 @@
-# Finnkino Movie App
+# Finnkino Elokuvat
 
 Date: Spring 2025\
 Organization: Laurea UAS\
@@ -10,7 +10,7 @@ Access the video demonstration on [Youtube]()
 
 ## Table of Contents:
 
-- [About Finnkino Movie App](#about-finnkino-movie-app)
+- [About Finnkino Elokuvat](#about-finnkino-elokuvat)
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
@@ -18,7 +18,7 @@ Access the video demonstration on [Youtube]()
 - [Credits](#credits)
 - [License](#license)
 
-## About Finnkino Movie App
+## About Finnkino Elokuvat
 
 - The app displays Finnkino's shows
 - First, users search for the desired theatre, then the app lists all shows for that theatre for the current day
@@ -48,11 +48,11 @@ Go to
 
 ## Status
 
-- Finnkino Movie App version 1.0.0 is now in development and not yet operational
+- Finnkino Elokuvat version 1.0.0 is now in development and not yet operational
 
 ## Credits
 
-- Finnkino Movie App was developed in co-operation with [Laurea UAS](https://www.laurea.fi)
+- Finnkino Elokuvat was developed in co-operation with [Laurea UAS](https://www.laurea.fi)
 
 ## License
 

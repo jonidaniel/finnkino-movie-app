@@ -5,6 +5,12 @@ function listShows(data) {
   // Contains all shows (i.e. every screening for every movie on present day)
   let shows = data.querySelectorAll("Show");
 
+  // Add subheader for incoming shows
+  let subheader = document.createElement("div");
+  subheader.innerHTML = "<h2>Seuraavat esitykset:</h2><br />";
+  subheader.style.textAlign = "center";
+  content.append(subheader);
+
   // Will contain key-value pairs; keys will be EventID's (i.e. ID's for every distinct movie),
   // values will be dttmShowStarts (i.e. movie screening start times)
   let moviesAndTheirStartTimes = {};
@@ -145,17 +151,22 @@ function handleClick(e) {
   else if (e == "Cine Atlas, Tampere") handleFetch(1034);
   else if (e == "Plevna, Tampere") handleFetch(1035);
   else if (e == "Kinopalatsi, Turku") handleFetch(1022);
-  else handleFetch(1046);
+  else if (e == "Luxe Mylly, Raisio") handleFetch(1046);
 }
 
 function main() {
   const header = document.createElement("div");
   const searchBox = document.createElement("div");
   const content = document.createElement("div");
+  content.id = "content";
   const footer = document.createElement("div");
 
-  content.id = "content";
-
+  /** Webpage layout
+   * 1. header
+   * 2. search box
+   * 3. movie results from search
+   * 4. footer
+   */
   header.innerHTML = `<h1 id="header">Finnkino Elokuvat</h1>`;
   searchBox.innerHTML = `
     <div class="search-box">
