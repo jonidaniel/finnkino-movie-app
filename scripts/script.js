@@ -1,13 +1,14 @@
 // A container to wrap all movie containers into
 let showContainers = document.createElement("div");
+// A subheader for the movie containers (incoming shows)
+let subheader = document.createElement("div");
 
 function listShows(data) {
   // Contains all shows (i.e. every screening for every movie on present day)
   let shows = data.querySelectorAll("Show");
 
-  // Add subheader for incoming shows
-  let subheader = document.createElement("div");
-  subheader.innerHTML = "<h2>Seuraavat esitykset:</h2><br />";
+  // Add text to the subheader
+  subheader.innerHTML = "<h2>Seuraavat näytökset:</h2><br />";
   subheader.style.textAlign = "center";
   content.append(subheader);
 
@@ -26,18 +27,18 @@ function listShows(data) {
    */
   for (let show of shows) {
     let eventID = show.querySelector("EventID").textContent;
+    // Trim the first 11 and the last 2 characters from the dates
+    let startTime = show
+      .querySelector("dttmShowStart")
+      .textContent.slice(11, 16);
     // If moviesAndTheirStartTimes doesn't already include a specific EventID as a key
     if (!(eventID in moviesAndTheirStartTimes)) {
       // Set EventID as a key, and dttmShowStart as a value (wrap in an array)
-      moviesAndTheirStartTimes[eventID] = [
-        show.querySelector("dttmShowStart").textContent,
-      ];
+      moviesAndTheirStartTimes[eventID] = [startTime];
       // If moviesAndTheirStartTimes already includes a specific EventID as a key
     } else {
       // Push dttmShowStart into an array
-      moviesAndTheirStartTimes[eventID].push(
-        show.querySelector("dttmShowStart").textContent
-      );
+      moviesAndTheirStartTimes[eventID].push(startTime);
     }
   }
 
@@ -49,6 +50,10 @@ function listShows(data) {
     if (
       !alreadyAddedMovies.includes(show.querySelector("EventID").textContent)
     ) {
+      let firstRow = document.createElement("p");
+      let secondRow = document.createElement("p");
+      let fourthRow = document.createElement("p");
+
       // Movie image
       let image = document.createElement("img");
       image.src = show
@@ -59,18 +64,31 @@ function listShows(data) {
       // Movie title
       let title = document.createElement("p");
       title.innerText = show.querySelector("Title").textContent;
+      title.style.display = "inline";
 
       // Original title
       let ogTitle = document.createElement("p");
-      ogTitle.innerText = show.querySelector("OriginalTitle").textContent;
+      ogTitle.innerText =
+        " (" + show.querySelector("OriginalTitle").textContent + ")";
+      ogTitle.style.display = "inline";
+
+      firstRow.append(title);
+      if (title.innerText.localeCompare(ogTitle.innerText) != 0)
+        firstRow.append(ogTitle);
 
       // Production year
       let year = document.createElement("p");
-      year.innerText = show.querySelector("ProductionYear").textContent;
+      year.innerText = show.querySelector("ProductionYear").textContent + ", ";
+      year.style.display = "inline";
 
       // Movie length
       let length = document.createElement("p");
-      length.innerText = show.querySelector("LengthInMinutes").textContent;
+      length.innerText =
+        show.querySelector("LengthInMinutes").textContent + " min";
+      length.style.display = "inline";
+
+      secondRow.append(year);
+      secondRow.append(length);
 
       // Movie genres
       let genres = document.createElement("p");
@@ -78,32 +96,41 @@ function listShows(data) {
 
       // Theatre and auditorium
       let theatreAndAuditorium = document.createElement("p");
-      theatreAndAuditorium.innerText = show.querySelector(
-        "TheatreAndAuditorium"
-      ).textContent;
+      theatreAndAuditorium.innerText =
+        show.querySelector("TheatreAndAuditorium").textContent + "; ";
+      theatreAndAuditorium.style.display = "inline";
 
       // Presentation method and language
       let presentationMethodAndLanguage = document.createElement("p");
       presentationMethodAndLanguage.innerText = show.querySelector(
         "PresentationMethodAndLanguage"
       ).textContent;
+      presentationMethodAndLanguage.style.display = "inline";
+
+      fourthRow.append(theatreAndAuditorium);
+      fourthRow.append(presentationMethodAndLanguage);
 
       // Start times
       let startTimes = document.createElement("p");
-      startTimes.innerText =
-        moviesAndTheirStartTimes[show.querySelector("EventID").textContent];
+      startTimes.innerText = "Näytösajat tänään: ";
+      for (time of moviesAndTheirStartTimes[
+        show.querySelector("EventID").textContent
+      ]) {
+        startTimes.innerText += time + ", ";
+      }
+      // Trim the last characters (, ) off of the start times string
+      startTimes.innerText = startTimes.innerText.substring(
+        0,
+        startTimes.innerText.length - 2
+      );
 
       // A container to wrap one movie and its info into
       let showContainer = document.createElement("div");
       showContainer.className = "showContainer";
 
       showContainer.append(image);
-      showContainer.append(title);
-      // Append original title only if it differs from title
-      if (title.innerText.localeCompare(ogTitle.innerText) != 0)
-        showContainer.append(ogTitle);
-      showContainer.append(year);
-      showContainer.append(length);
+      showContainer.append(firstRow);
+      showContainer.append(secondRow);
       showContainer.append(genres);
       showContainer.append(theatreAndAuditorium);
       showContainer.append(presentationMethodAndLanguage);
@@ -132,8 +159,9 @@ function handleFetch(theatre) {
 }
 
 function handleClick(e) {
-  // Remove all shows from the webpage (in case user changes the theatre)
+  // Remove the subheader and all shows from the webpage (in case user changes the theatre)
   showContainers.innerHTML = "<div></div>";
+  subheader.innerHTML = "<div></div>";
 
   if (e == "Omena, Espoo") handleFetch(1039);
   else if (e == "Sello, Espoo") handleFetch(1038);
