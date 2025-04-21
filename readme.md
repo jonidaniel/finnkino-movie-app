@@ -40,9 +40,7 @@ I've developed this application with:
 
 Go to
 
-- https://???.netlify.app/ (preferably Safari or Chrome) or
-
-- https://???.onrender.com/ (preferably Safari) or
+- https://finnkinomovieapp.netlify.app (preferably Safari or Chrome) or
 
 - Clone repo with `git clone https://github.com/jonidaniel/finnkino-movie-app` and open `finnkino-movie-app/index.html` in your browser (preferably Chrome)
 
