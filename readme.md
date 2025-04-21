@@ -42,11 +42,11 @@ Go to
 
 - https://finnkinomovieapp.netlify.app (preferably Safari or Chrome) or
 
-- Clone repo with `git clone https://github.com/jonidaniel/finnkino-movie-app` and open `finnkino-movie-app/index.html` in your browser (preferably Chrome)
+- Clone repo with `git clone https://github.com/jonidaniel/finnkino-movie-app` and open `finnkino-movie-app/index.html` in your browser (preferably Safari or Chrome)
 
 ## Status
 
-- Finnkino Elokuvat version 1.0.0 is now in development and not yet operational
+- Finnkino Elokuvat version 1.0.0 is now operational on Netlify
 
 ## Credits
 
