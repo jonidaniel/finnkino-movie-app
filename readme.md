@@ -1,4 +1,4 @@
-# Finnkino Elokuvat
+# Movioso
 
 Date: Spring 2025\
 Organization: Laurea UAS\
@@ -10,7 +10,7 @@ Access the video demonstration on [Youtube]()
 
 ## Table of Contents:
 
-- [About Finnkino Elokuvat](#about-finnkino-elokuvat)
+- [About Movioso](#about-movioso)
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
@@ -18,7 +18,7 @@ Access the video demonstration on [Youtube]()
 - [Credits](#credits)
 - [License](#license)
 
-## About Finnkino Elokuvat
+## About Movioso
 
 - The app displays Finnkino's shows
 - First, users search for the desired theatre, then the app lists all shows for that theatre for the current day
@@ -40,17 +40,17 @@ I've developed this application with:
 
 Go to
 
-- https://finnkinomovieapp.netlify.app (preferably Safari or Chrome) or
+- https://movioso.netlify.app (preferably Safari or Chrome) or
 
-- Clone repo with `git clone https://github.com/jonidaniel/finnkino-movie-app` and open `finnkino-movie-app/index.html` in your browser (preferably Safari or Chrome)
+- Clone repo with `git clone https://github.com/jonidaniel/movioso` and open `movioso/index.html` in your browser (preferably Safari or Chrome)
 
 ## Status
 
-- Finnkino Elokuvat version 1.0.0 is now operational on Netlify
+- Movioso version 1.0.0 is now operational on Netlify
 
 ## Credits
 
-- Finnkino Elokuvat was developed in co-operation with [Laurea UAS](https://www.laurea.fi)
+- Movioso was developed in co-operation with [Laurea UAS](https://www.laurea.fi)
 
 ## License
 

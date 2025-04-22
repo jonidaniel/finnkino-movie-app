@@ -1,50 +1,16 @@
-// A container to wrap all movie containers into
+/**
+ * showContainer contains one show
+ * showContainers contains all showContainers
+ */
+
+// Container to wrap all show containers into
 let showContainers = document.createElement("div");
-// A subheader for the movie containers (incoming shows)
+// Header for show containers
 let subheader = document.createElement("div");
 
-function listShows(data) {
-  // Contains all shows (i.e. every screening for every movie on present day)
-  let shows = data.querySelectorAll("Show");
-
-  // Add text to the subheader
-  subheader.innerHTML = "<h2>Seuraavat näytökset:</h2><br />";
-  subheader.style.textAlign = "center";
-  content.append(subheader);
-
-  // Will contain key-value pairs; keys will be EventID's (i.e. ID's for every distinct movie),
-  // values will be dttmShowStarts (i.e. movie screening start times)
-  let moviesAndTheirStartTimes = {};
-
-  /** Gather all different movies (i.e. movies that run in chosen theatre on present day)
-   *  and their screening/show start times in an object
-   *  The point here is to form a list of all DIFFERENT MOVIES running on present day
-   * {
-   *   movie01: [startTime01],
-   *   movie02: [startTime01, startTime02],
-   *   movie03: [startTime01, startTime02, startTime03]
-   * }
-   */
-  for (let show of shows) {
-    let eventID = show.querySelector("EventID").textContent;
-    // Trim the first 11 and the last 2 characters from the dates
-    let startTime = show
-      .querySelector("dttmShowStart")
-      .textContent.slice(11, 16);
-    // If moviesAndTheirStartTimes doesn't already include a specific EventID as a key
-    if (!(eventID in moviesAndTheirStartTimes)) {
-      // Set EventID as a key, and dttmShowStart as a value (wrap in an array)
-      moviesAndTheirStartTimes[eventID] = [startTime];
-      // If moviesAndTheirStartTimes already includes a specific EventID as a key
-    } else {
-      // Push dttmShowStart into an array
-      moviesAndTheirStartTimes[eventID].push(startTime);
-    }
-  }
-
+function formShowContainers(shows, moviesAndTheirStartTimes) {
   // Keeps track of already added movies
   let alreadyAddedMovies = [];
-
   for (let show of shows) {
     // Execute if you come across an unseen EventID (i.e. a new movie)
     if (
@@ -68,13 +34,17 @@ function listShows(data) {
 
       // Original title
       let ogTitle = document.createElement("p");
-      ogTitle.innerText =
-        " (" + show.querySelector("OriginalTitle").textContent + ")";
+      ogTitle.innerText = show.querySelector("OriginalTitle").textContent;
       ogTitle.style.display = "inline";
 
       firstRow.append(title);
-      if (title.innerText.localeCompare(ogTitle.innerText) != 0)
+      // Append only if title and original title differ from each other
+      if (title.innerText.localeCompare(ogTitle.innerText) != 0) {
+        ogTitle.innerText = " (" + ogTitle.innerText + ")";
         firstRow.append(ogTitle);
+      }
+
+      if ("a".localeCompare("a") != 0) console.log("ASD");
 
       // Production year
       let year = document.createElement("p");
@@ -143,6 +113,50 @@ function listShows(data) {
       alreadyAddedMovies.push(show.querySelector("EventID").textContent);
     }
   }
+}
+
+// Displays shows on webpage
+function displayShows(data) {
+  // Contains all shows
+  // (i.e. every screening for every movie on present day)
+  let shows = data.querySelectorAll("Show");
+
+  // Add text to subheader
+  subheader.innerHTML = "<h2>Seuraavat näytökset:</h2><br />";
+  subheader.style.textAlign = "center";
+  content.append(subheader);
+
+  // Will contain key-value pairs
+  // Keys will be EventID's (i.e. ID's for every DISTINCT MOVIE),
+  // values will be dttmShowStarts (i.e. movie screening start times)
+  // * {
+  // *   movie01: [startTime01],
+  // *   movie02: [startTime01, startTime02],
+  // *   movie03: [startTime01, startTime02, startTime03]
+  // * }
+  let moviesAndTheirStartTimes = {};
+  // Gather all different movies (i.e. movies that run in chosen theatre on present day)
+  // and their screening start times in an object
+  // The point here is to form a list of all DIFFERENT MOVIES running on present day
+  // Finnkino API's don't provide an endpoint which lists distinct movies, only
+  for (let show of shows) {
+    let eventID = show.querySelector("EventID").textContent;
+    // Trim the first 11 and the last 2 characters from the dates
+    let startTime = show
+      .querySelector("dttmShowStart")
+      .textContent.slice(11, 16);
+    // Execute if moviesAndTheirStartTimes doesn't already include specific EventID as key
+    if (!(eventID in moviesAndTheirStartTimes)) {
+      // Set EventID as key, and dttmShowStart as value (wrap in array)
+      moviesAndTheirStartTimes[eventID] = [startTime];
+      // If moviesAndTheirStartTimes already includes specific EventID as key
+    } else {
+      // Push dttmShowStart into array
+      moviesAndTheirStartTimes[eventID].push(startTime);
+    }
+  }
+
+  formShowContainers(shows, moviesAndTheirStartTimes);
 
   // Append all show containers to the webpage
   content.append(showContainers);

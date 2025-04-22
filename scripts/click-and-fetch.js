@@ -1,18 +1,26 @@
+// Fetches show data from Finnkino website as XML
 function handleFetch(theatre) {
   fetch(`https://www.finnkino.fi/xml/Schedule/?area=${theatre}`)
     .then((response) => response.text())
     .then((xmlText) => new DOMParser().parseFromString(xmlText, "text/xml"))
     .then((xmlDoc) => {
-      listShows(xmlDoc);
+      // XML data is passed to listShows
+      displayShows(xmlDoc);
     })
     .catch((error) => console.error("Error when fetching XML feed: ", error));
 }
 
+// Handles theatre searches
+// (i.e. magnifying glass clicks)
 function handleClick(e) {
-  // Remove the subheader and all shows from the webpage (in case user changes the theatre)
+  // Remove subheader and all shows from webpage
+  // (in case user searches for another theatre)
   showContainers.innerHTML = "<div></div>";
   subheader.innerHTML = "<div></div>";
 
+  // Routing for different theatres
+  // Distinct ID's are passed to handleFetch,
+  // based on theatres searched
   if (e == "Omena, Espoo") handleFetch(1039);
   else if (e == "Sello, Espoo") handleFetch(1038);
   else if (e == "Itis, Helsinki") handleFetch(1045);
