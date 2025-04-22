@@ -23,6 +23,7 @@ Access the video demonstration on [Youtube]()
 - The app displays Finnkino's shows
 - First, users search for the desired theatre, then the app lists all shows for that theatre for the current day
 - Specific information, like production years and genres, are shown for every show
+- An AJAX project for the Laurea UAS course Web-sovellusten kehittäminen Javascriptillä TO00BL10-3025
 
 ## Screenshots
 
