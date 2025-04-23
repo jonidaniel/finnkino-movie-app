@@ -1,21 +1,24 @@
 // Fetches show data from Finnkino website as XML
 function handleFetch(theatre) {
+  // AJAX request, using fetch
   fetch(`https://www.finnkino.fi/xml/Schedule/?area=${theatre}`)
+    // Turn the response into XML text
     .then((response) => response.text())
+    // Parse the XML text
     .then((xmlText) => new DOMParser().parseFromString(xmlText, "text/xml"))
+    // The XML data is passed to displayShows
     .then((xmlDoc) => {
-      // XML data is passed to listShows
       displayShows(xmlDoc);
     })
     .catch((error) => console.error("Error when fetching XML feed: ", error));
 }
 
 // Handles theatre searches
-// (i.e. magnifying glass clicks)
+// I.e. magnifying glass clicks
 function handleClick(e) {
   // Remove subheader and all shows from webpage
   // (in case user searches for another theatre)
-  showContainers.innerHTML = "<div></div>";
+  content.innerHTML = "<div></div>";
   subheader.innerHTML = "<div></div>";
 
   // Routing for different theatres

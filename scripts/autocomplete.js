@@ -1,4 +1,4 @@
-// Possible keywords to find with search input
+// Possible keywords to find by searching
 let availableKeywords = [
   "Omena, Espoo",
   "Sello, Espoo",
@@ -19,9 +19,9 @@ let availableKeywords = [
   "Luxe Mylly, Raisio",
 ];
 
-// Box, where suggested keywords are displayed
+// The box where suggested keywords are displayed
 const resultsBox = document.querySelector(".result-box");
-// Input field, where the search input is written
+// The input field where search input is written
 const inputBox = document.getElementById("input-box");
 
 // Invoked when anything is written into the input field

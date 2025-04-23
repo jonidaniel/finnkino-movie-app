@@ -1,0 +1,59 @@
+/* Search box container
+I.e. input field + search button + result box */
+.search-box {
+  border-radius: 5px;
+  margin: 75px auto 75px;
+  width: 350px;
+}
+
+/* Search row
+I.e. input field + search button */
+.search-row {
+  align-items: center;
+  display: flex;
+}
+
+/* Search input field */
+input {
+  background: transparent;
+  border: 0;
+  color: yellow;
+  flex: 1;
+  font-size: 18px;
+  height: 25px;
+  outline: 0;
+}
+
+/* Search button */
+button {
+  background: transparent;
+  border: 0;
+}
+button .fa-solid {
+  color: grey;
+  cursor: pointer;
+  font-size: 22px;
+  width: 25px;
+}
+
+/* Result box
+I.e. the space below the search input field,
+where the matching keywords are shown */
+.result-box {
+  max-height: 250px;
+  overflow-y: scroll;
+  scrollbar-color: grey black;
+}
+.result-box ul {
+  border-top: 1px solid #999;
+  padding: 15px 10px;
+}
+.result-box ul li {
+  border-radius: 3px;
+  cursor: pointer;
+  list-style: none;
+  padding: 8px;
+}
+.result-box ul li:hover {
+  background: grey;
+}

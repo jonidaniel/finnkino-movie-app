@@ -1,10 +1,3 @@
-/**
- * showContainer contains one show
- * showContainers contains all showContainers
- */
-
-// Container to wrap all show containers into
-let showContainers = document.createElement("div");
 // Header for show containers
 let subheader = document.createElement("div");
 
@@ -12,7 +5,8 @@ function formShowContainers(shows, moviesAndTheirStartTimes) {
   // Keeps track of already added movies
   let alreadyAddedMovies = [];
   for (let show of shows) {
-    // Execute if you come across an unseen EventID (i.e. a new movie)
+    // Execute if you come across an unseen EventID
+    // I.e. a new movie
     if (
       !alreadyAddedMovies.includes(show.querySelector("EventID").textContent)
     ) {
@@ -106,7 +100,7 @@ function formShowContainers(shows, moviesAndTheirStartTimes) {
       showContainer.append(presentationMethodAndLanguage);
       showContainer.append(startTimes);
 
-      showContainers.append(showContainer);
+      content.append(showContainer);
 
       // Push EventID into alreadyAddedMovies
       // (i.e. keep track of already added movies)
@@ -129,11 +123,11 @@ function displayShows(data) {
   // Will contain key-value pairs
   // Keys will be EventID's (i.e. ID's for every DISTINCT MOVIE),
   // values will be dttmShowStarts (i.e. movie screening start times)
-  // * {
-  // *   movie01: [startTime01],
-  // *   movie02: [startTime01, startTime02],
-  // *   movie03: [startTime01, startTime02, startTime03]
-  // * }
+  // {
+  //   movie01: [startTime01],
+  //   movie02: [startTime01, startTime02],
+  //   movie03: [startTime01, startTime02, startTime03]
+  // }
   let moviesAndTheirStartTimes = {};
   // Gather all different movies (i.e. movies that run in chosen theatre on present day)
   // and their screening start times in an object
@@ -157,7 +151,4 @@ function displayShows(data) {
   }
 
   formShowContainers(shows, moviesAndTheirStartTimes);
-
-  // Append all show containers to the webpage
-  content.append(showContainers);
 }
