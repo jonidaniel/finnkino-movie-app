@@ -20,10 +20,11 @@ Access the video demonstration on [Youtube](https://youtu.be/eIdb0tUxCF0)
 
 ## About Movioso
 
-- The app displays Finnkino's shows
-- First, users search for the desired theatre, then the app lists all shows for that theatre for the current day
-- Specific information, like production years and genres, are shown for every show
-- An AJAX project for the Laurea UAS course Web-sovellusten kehittäminen Javascriptillä TO00BL10-3025
+- The app displays information on Finnkino's shows
+- First, users search for the desired theatre, then the app lists all movies and their show times for that theatre for the present day
+- Also other specific information, like production years and genres, are shown for every movie
+- Utilizes AJAX technique in fetching XML data from Finnkino's API
+- Developed for the [Laurea](https://www.laurea.fi) UAS course Web-sovellusten kehittäminen Javascriptillä TO00BL10-3025
 
 ## Screenshots
 
