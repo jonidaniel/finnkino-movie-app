@@ -25,8 +25,8 @@ ul {
   color: yellow;
 }
 
-/* Every movie is wrapped in a show container
+/* Every movie is wrapped in a movie container
 Image on the left, and info on the right */
-.showContainer {
+.movieContainer {
   height: 350px;
 }
