@@ -31,7 +31,7 @@ const inputBox = document.getElementById("input-box");
  * Also empties the results box
  *
  * Params:
- * list, object (element) – contains the list item that was clicked
+ * item, object (element) – contains the list item that was clicked
  */
 function selectInput(item) {
   // When any list item is clicked, it's set as the input box value

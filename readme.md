@@ -6,7 +6,7 @@ Author: Joni Mäkinen [@jonidaniel](https://github.com/jonidaniel)
 
 ## Video Demo:
 
-Access the video demonstration on [Youtube]()
+Access the video demonstration on [Youtube](https://youtu.be/eIdb0tUxCF0)
 
 ## Table of Contents:
 
@@ -28,6 +28,8 @@ Access the video demonstration on [Youtube]()
 ## Screenshots
 
 ![](screenshots/ss01.png?raw=true)
+![](screenshots/ss02.png?raw=true)
+![](screenshots/ss03.png?raw=true)
 
 ## Technologies
 
