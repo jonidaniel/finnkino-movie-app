@@ -1,3 +1,5 @@
+/* BASIC STYLES */
+
 * {
   font-family: "Courier New", Courier, monospace;
 }
@@ -23,10 +25,4 @@ h4,
 p,
 ul {
   color: yellow;
-}
-
-/* Every movie is wrapped in a movie container
-Image on the left, and info on the right */
-.movieContainer {
-  height: 350px;
 }

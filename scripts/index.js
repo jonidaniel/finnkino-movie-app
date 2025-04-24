@@ -1,18 +1,22 @@
-/* Constructs webpage main components:
-header, search box, content container containing show results, and footer
+// APPLICATION ENTRY POINT
 
-Webpage layout from top to bottom
-1. header
-2. search box
-3. show results, dependent on search
-4. footer */
+/* Constructs webpage main components
+ *
+ * Webpage layout from top to bottom:
+ * 1. header
+ * 2. search box
+ * 3. content – movie results, dependent on search
+ * 4. footer
+ */
 function main() {
+  // Create main components
   const header = document.createElement("div");
   const searchBox = document.createElement("div");
   const content = document.createElement("div");
   content.id = "content";
   const footer = document.createElement("div");
 
+  // Set hard-codable HTML to main components
   header.innerHTML = `<h1 id="header">Movioso</h1>`;
   searchBox.innerHTML = `
     <div class="search-box">

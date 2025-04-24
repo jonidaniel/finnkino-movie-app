@@ -1,4 +1,12 @@
-// Fetches show data from Finnkino website as XML
+// CLICK AND FETCH OPERATIONS
+
+/* Fetches show data as XML from Finnkino's API endpoint
+ *
+ * Forwards the parsed XML to formMoviesObject (located in ./shows.js)
+ *
+ * Params:
+ * theatre, number – contains the theatre ID
+ */
 function handleFetch(theatre) {
   // AJAX request, using fetch
   fetch(`https://www.finnkino.fi/xml/Schedule/?area=${theatre}`)
@@ -6,15 +14,20 @@ function handleFetch(theatre) {
     .then((response) => response.text())
     // Parse the XML text
     .then((xmlText) => new DOMParser().parseFromString(xmlText, "text/xml"))
-    // The XML data is passed to displayShows
+    // The XML data is passed to formMoviesObject
     .then((xmlDoc) => {
       formMoviesObject(xmlDoc);
     })
     .catch((error) => console.error("Error when fetching XML feed: ", error));
 }
 
-// Handles theatre searches
-// I.e. magnifying glass clicks
+/* Handles theatre searches (i.e. magnifying glass clicks)
+ *
+ * Passes specific theatre ID (dependent on user search) to handleFetch
+ *
+ * Params:
+ * e, string – contains the search input box value
+ */
 function handleClick(e) {
   // Remove subheader and all shows from webpage
   // (in case user searches for another theatre)
