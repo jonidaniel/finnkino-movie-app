@@ -36,7 +36,7 @@ function displayMovieContainers(movies) {
   for (movie in movies) {
     // A container to wrap one movie and its info into
     let movieContainer = document.createElement("div");
-    movieContainer.style.height = "350px";
+    movieContainer.className = "movieContainer";
 
     // Contains title and possible original title
     let firstRow = document.createElement("p");
