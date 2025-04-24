@@ -8,7 +8,7 @@ function handleFetch(theatre) {
     .then((xmlText) => new DOMParser().parseFromString(xmlText, "text/xml"))
     // The XML data is passed to displayShows
     .then((xmlDoc) => {
-      gatherMoviesAndTheirStartTimes(xmlDoc);
+      formMoviesObject(xmlDoc);
     })
     .catch((error) => console.error("Error when fetching XML feed: ", error));
 }

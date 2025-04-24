@@ -4,12 +4,12 @@
  */
 let subheader = document.createElement("div");
 
-/* Forms movie containers
+/* Displays the movie containers
  *
  * There's one movie container for every movie
  * A movie container contains a movie image, title, possible original title,
  * production year, length, genres, specific theatre and auditorium,
- * and the movie's presentation method and language
+ * presentation method and language, and the movie's show times
  *
  * Movie image takes the left side of the container,
  * all other info is shown on the right side
@@ -17,147 +17,18 @@ let subheader = document.createElement("div");
  * 1. title, original title
  * 2. prod. year, length
  * 3. genres
- * 4. theatre, audit.
- * 5. pres. method, lang.
+ * 4. theatre, audit., pres. method, lang.
+ * 5. show times
  *
  * Params:
- * shows - contains all shows, i.e. every screening for every movie on present day
- * moviesAndTheirStartTimes - contains all distinct movies and their start times
+ * movies - contains all movies
  */
-// function formAndDisplayMovieContainers(shows, moviesAndTheirStartTimes) {
-//   // Add text to subheader
-//   // This mustn't be global, this way it works correctly
-//   subheader.innerHTML = "<h2>Seuraavat näytökset:</h2><br />";
-//   subheader.style.textAlign = "center";
-//   content.append(subheader);
-
-//   // Keeps track of already added movies
-//   let alreadyAddedMovies = [];
-//   // Iterate all shows
-//   for (let show of shows) {
-//     // Execute if you come across an unseen EventID
-//     // I.e. a movie not yet added to the webpage
-//     if (
-//       !alreadyAddedMovies.includes(show.querySelector("EventID").textContent)
-//     ) {
-//       let firstRow = document.createElement("p");
-//       let secondRow = document.createElement("p");
-//       let fourthRow = document.createElement("p");
-
-//       // Movie image
-//       let image = document.createElement("img");
-//       image.src = show
-//         .querySelector("Images")
-//         .querySelector("EventLargeImagePortrait").textContent;
-//       image.height = 350;
-
-//       // Movie title
-//       let title = document.createElement("p");
-//       title.innerText = show.querySelector("Title").textContent;
-//       title.style.display = "inline";
-
-//       // Original title
-//       let ogTitle = document.createElement("p");
-//       ogTitle.innerText = show.querySelector("OriginalTitle").textContent;
-//       ogTitle.style.display = "inline";
-
-//       firstRow.append(title);
-//       // Append only if title and original title differ from each other
-//       if (title.innerText.localeCompare(ogTitle.innerText) != 0) {
-//         ogTitle.innerText = " (" + ogTitle.innerText + ")";
-//         firstRow.append(ogTitle);
-//       }
-
-//       if ("a".localeCompare("a") != 0) console.log("ASD");
-
-//       // Production year
-//       let year = document.createElement("p");
-//       year.innerText = show.querySelector("ProductionYear").textContent + ", ";
-//       year.style.display = "inline";
-
-//       // Movie length
-//       let length = document.createElement("p");
-//       length.innerText =
-//         show.querySelector("LengthInMinutes").textContent + " min";
-//       length.style.display = "inline";
-
-//       secondRow.append(year);
-//       secondRow.append(length);
-
-//       // Movie genres
-//       let genres = document.createElement("p");
-//       genres.innerText = show.querySelector("Genres").textContent;
-
-//       // Theatre and auditorium
-//       let theatreAndAuditorium = document.createElement("p");
-//       theatreAndAuditorium.innerText =
-//         show.querySelector("TheatreAndAuditorium").textContent + "; ";
-//       theatreAndAuditorium.style.display = "inline";
-
-//       // Presentation method and language
-//       let presentationMethodAndLanguage = document.createElement("p");
-//       presentationMethodAndLanguage.innerText = show.querySelector(
-//         "PresentationMethodAndLanguage"
-//       ).textContent;
-//       presentationMethodAndLanguage.style.display = "inline";
-
-//       fourthRow.append(theatreAndAuditorium);
-//       fourthRow.append(presentationMethodAndLanguage);
-
-//       // Start times
-//       let startTimes = document.createElement("p");
-//       startTimes.innerText = "Näytösajat tänään: ";
-//       for (time of moviesAndTheirStartTimes[
-//         show.querySelector("EventID").textContent
-//       ]) {
-//         startTimes.innerText += time + ", ";
-//       }
-//       // Trim the last characters (, ) off of the start times string
-//       startTimes.innerText = startTimes.innerText.substring(
-//         0,
-//         startTimes.innerText.length - 2
-//       );
-
-//       // A container to wrap one movie and its info into
-//       let movieContainer = document.createElement("div");
-//       movieContainer.className = "showContainer";
-
-//       movieContainer.append(image);
-//       movieContainer.append(firstRow);
-//       movieContainer.append(secondRow);
-//       movieContainer.append(genres);
-//       movieContainer.append(theatreAndAuditorium);
-//       movieContainer.append(presentationMethodAndLanguage);
-//       movieContainer.append(startTimes);
-
-//       content.append(movieContainer);
-
-//       // Push EventID into alreadyAddedMovies
-//       // (i.e. keep track of already added movies)
-//       alreadyAddedMovies.push(show.querySelector("EventID").textContent);
-//     }
-//   }
-// }
-function formAndDisplayMovieContainers(movies) {
+function displayMovieContainers(movies) {
   // Add text to subheader
   // This mustn't be global, this way it works correctly
   subheader.innerHTML = "<h2>Seuraavat näytökset:</h2><br />";
   subheader.style.textAlign = "center";
   content.append(subheader);
-
-  // // Start times
-  // let startTimes = document.createElement("p");
-  // startTimes.innerText = "Näytösajat tänään: ";
-  // for (time of moviesAndTheirStartTimes[
-  //   show.querySelector("EventID").textContent
-  // ]) {
-  //   startTimes.innerText += time + ", ";
-  // }
-  // // Trim the last characters (, ) off of the start times string
-  // startTimes.innerText = startTimes.innerText.substring(
-  //   0,
-  //   startTimes.innerText.length - 2
-  // );
 
   // Iterate all movies
   for (movie in movies) {
@@ -179,29 +50,39 @@ function formAndDisplayMovieContainers(movies) {
         " (" + movies[movie].ogTitle.innerText + ")";
       firstRow.append(movies[movie].ogTitle.innerText);
     }
-    // firstRow.append(movies[movie].ogTitle);
     movieContainer.append(firstRow);
     let secondRow = document.createElement("p");
-    secondRow.append(movies[movie].year);
-    secondRow.append(movies[movie].length);
+    secondRow.append(movies[movie].year.innerText + ", ");
+    secondRow.append(movies[movie].length.innerText + " min");
     movieContainer.append(secondRow);
     movieContainer.append(movies[movie].genres);
     let fourthRow = document.createElement("p");
-    fourthRow.append(movies[movie].location);
+    fourthRow.append(movies[movie].location.innerText + "; ");
     fourthRow.append(movies[movie].presMethodAndLang);
     movieContainer.append(fourthRow);
-    movieContainer.append(movies[movie].showTimes);
+    // Show times
+    let showTimes = document.createElement("p");
+    showTimes.innerText = "Näytösajat tänään: ";
+
+    for (let i = 0; i < movies[movie].showTimes.length; i++) {
+      if (i != movies[movie].showTimes.length - 1) {
+        showTimes.innerText += movies[movie].showTimes[i] + ", ";
+      } else {
+        showTimes.innerText += movies[movie].showTimes[i];
+      }
+    }
+    movieContainer.append(showTimes);
 
     // Append movieContainer to webpage content
     content.append(movieContainer);
   }
 }
 
-/* Gathers all different movies (i.e. distinct movies that run in chosen theatre on present day)
- * and their screening start times in an object
+/* Gathers all different movies
+ * (i.e. distinct movies that run in chosen theatre on present day) in an object
  *
  * Finnkino's API's don't provide an endpoint which would list DISTINCT movies conveniently,
- * they do provide an endpoint which lists ALL SHOWS in chronological order
+ * they do provide an endpoint which lists ALL SHOWS (not ordered by movie) in chronological order
  *
  * We want to display every movie ONLY ONCE on the webpage,
  * with all screening start times adjacent to the movie image and title
@@ -210,45 +91,12 @@ function formAndDisplayMovieContainers(movies) {
  * Params:
  * data - contains all shows, i.e. every screening for every movie on present day
  */
-function gatherMoviesAndTheirStartTimes(data) {
+function formMoviesObject(data) {
   /* Will contain key-value pairs
    * Keys will be EventID's (i.e. ID's for every distinct movie),
-   * values will be dttmShowStart's (i.e. movie screening start times)
+   * values will be the movie properties we want to display on the webpage
+   *
    * {
-   *   movie01: [startTime01],
-   *   movie02: [startTime01, startTime02],
-   *   movie03: [startTime01, startTime02, startTime03]
-   *   ...
-   * }
-   */
-  // let moviesAndTheirStartTimes = {};
-
-  // let shows = data.querySelectorAll("Show");
-  // // Iterate all shows and fill moviesAndTheirStartTimes
-  // for (let show of shows) {
-  //   // Trim the first 11 and the last 2 characters from all dates
-  //   // I.e. spare only the starting hours and minutes
-  //   let startTime = show
-  //     .querySelector("dttmShowStart")
-  //     .textContent.slice(11, 16);
-
-  //   // EventID's are Finnkino's numeric identifications for movies
-  //   // Every movie has a distinct ID
-  //   let eventID = show.querySelector("EventID").textContent;
-  //   // Execute if moviesAndTheirStartTimes doesn't already include specific EventID as key
-  //   // I.e. if adding the first start time for a movie
-  //   if (!(eventID in moviesAndTheirStartTimes)) {
-  //     // Set EventID as key, and dttmShowStart as value (wrap in array)
-  //     moviesAndTheirStartTimes[eventID] = [startTime];
-  //     // If moviesAndTheirStartTimes already includes specific EventID as key
-  //     // I.e. if there are already at least one start time for a movie
-  //   } else {
-  //     // Push dttmShowStart into array
-  //     moviesAndTheirStartTimes[eventID].push(startTime);
-  //   }
-  // }
-
-  /* {
    *   movie01: {
    *              image: "asd",
    *              title: "asd",
@@ -268,49 +116,72 @@ function gatherMoviesAndTheirStartTimes(data) {
    *              ...
    * }
    */
-
   let movies = {};
 
+  // Contains all shows
+  // (i.e. every screening for every movie on present day)
   let shows = data.querySelectorAll("Show");
-  // Iterate all shows
+  // Iterate all shows and fill movies object
   for (let show of shows) {
-    // Distinct ID identifying a movie
+    // EventID's are Finnkino's numeric identifications for movies
+    // Every movie has a distinct ID
     let eventID = show.querySelector("EventID").textContent;
 
+    // Save needed properties to variables
+    // Execute if an EventID isn't already added
     if (!(eventID in movies)) {
-      // Save needed properties to variables
+      // Image
       const image = document.createElement("img");
       image.src = show
         .querySelector("Images")
         .querySelector("EventLargeImagePortrait").textContent;
       image.height = 350;
+
+      // Title
       const title = document.createElement("p");
       title.innerText = show.querySelector("Title").textContent;
       title.style.display = "inline";
+
+      // Original title
       const ogTitle = document.createElement("p");
       ogTitle.innerText = show.querySelector("OriginalTitle").textContent;
+
+      // Production year
       const year = document.createElement("p");
       year.innerText = show.querySelector("ProductionYear").textContent;
       year.style.display = "inline";
+
+      // Length
       const length = document.createElement("p");
       length.innerText = show.querySelector("LengthInMinutes").textContent;
       length.style.display = "inline";
+
+      // Genres
       const genres = document.createElement("p");
       genres.innerText = show.querySelector("Genres").textContent;
+
+      // Location
       const location = document.createElement("p");
       location.innerText = show.querySelector(
         "TheatreAndAuditorium"
       ).textContent;
       location.style.display = "inline";
+
+      // Presentation method and language
       const presMethodAndLang = document.createElement("p");
       presMethodAndLang.innerText = show.querySelector(
         "PresentationMethodAndLanguage"
       ).textContent;
       presMethodAndLang.style.display = "inline";
+
+      // Show times
+      // Trim the first 11 and the last 2 characters from all dates
+      // I.e. spare only the starting hours and minutes
       const showTime = show
         .querySelector("dttmShowStart")
         .textContent.slice(11, 16);
 
+      // Initialize movies[eventID] as an object, so we can assign it the keys we want
       movies[eventID] = {};
 
       // Assign keys to movies[eventID]
@@ -325,6 +196,8 @@ function gatherMoviesAndTheirStartTimes(data) {
         presMethodAndLang: presMethodAndLang,
         showTimes: [showTime],
       });
+      // Save only the show start time
+      // Execute if an EventID is already added
     } else {
       const showTime = show
         .querySelector("dttmShowStart")
@@ -333,5 +206,6 @@ function gatherMoviesAndTheirStartTimes(data) {
     }
   }
 
-  formAndDisplayMovieContainers(movies);
+  // Go render the movie containers onto the webpage
+  displayMovieContainers(movies);
 }
